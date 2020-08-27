@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Venda de Produtos</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="card mt-4">
+			<h5 class="card-header text-white bg-primary">Venda de Produtos</h5>
+			<div class="card-body">
+				<p> Informe o nome do produto, a quantidade,o valor unitário, e a quantidade de parcelas, em seguida
+					clique em <mark>"Calcular"</mark>, para calcular as duas opções disponíveis um com o valor total da
+					compra à vista, e outra com valor de cada parcela e o total da compra à prazo.</p>
+
+				<form id="form_venda" action="/calcular" method="POST">
+
+					<div class="form-group">
+						<label for="nome_produto">Nome do Produto</label>
+						<input id="nome_produto" type="text" name="nome_produto" value="<%=nome_produto%>"
+							class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="quantidade">Quantidade</label>
+						<input id="quantidade" type="number" step="1" min="0" name="quantidade" value="<%=quantidade%>"
+							class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="preco_unitario">Preço Unitário (R$)</label>
+						<input id="preco_unitario" type="number" step="any" min="0" name="preco_unitario"
+							value="<%=preco_unitario%>" class="form-control">
+					</div>
+
+					<hr class="separator">
+
+					<p class="h5"> Pagamento à vista ?</p>
+
+					<div class="form-group">
+						<label for="preco_total_a_vista">Preço Total à vista (US$)</label>
+						<input id="preco_total_a_vista" type="number" name="preco_total_a_vista"
+							value="<%=preco_total_a_vista%>" class="form-control" readonly>
+					</div>
+
+					<hr class="separator">
+
+					<p class="h5"> Pagamento parcelado (acréscimo de 3%) ?</p>
+
+					<div class="form-group">
+						<label for="n_parcelas">Número de Parcelas</label>
+						<input id="n_parcelas" type="number" step="1" min="0" name="n_parcelas" value="<%=n_parcelas%>"
+							class="form-control">
+					</div>
+
+					<div class="form-group">
+						<label for="valor_parcela">Valor da Parcela (R$)</label>
+						<input id="valor_parcela" type="number" name="valor_parcela" value="<%=valor_parcela%>"
+							class="form-control" readonly>
+					</div>
+
+					<div class="form-group">
+						<label for="preco_total_a_prazo">Preço Total à prazo (US$)</label>
+						<input id="preco_total_a_prazo" type="number" name="preco_total_a_prazo"
+							value="<%=preco_total_a_prazo%>" class="form-control" readonly>
+					</div>
+
+					<% if(mensagens.length > 0){ %>
+					<% mensagens.forEach(function(mensagem){ %>
+					<div class="alert alert-danger">
+						<strong>Alerta!</strong> <%= mensagem %>
+					</div>
+					<% }); %>
+					<% } %>
+				</form>
+			</div>
+			<div class="card-footer">
+				<a class="btn btn-success btn-lg" href="/">Novo</a>
+				<input class="btn btn-primary btn-lg" type="submit" value="Calcular" form="form_venda">
+			</div>
+		</div>
+	</div>
+
+	<footer class="page-footer font-small blue pt-4">
+		<div class="footer-copyright text-center py-3">© 2020 VendaProdutos - Autor:
+			<a href="https://github.com/omateuscastro/"> Mateus Castro</a>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+
+</html>
